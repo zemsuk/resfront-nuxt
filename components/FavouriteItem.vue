@@ -16,7 +16,7 @@
         </div>
       </div>
       <div>
-        <CartDetails v-bind:data="test" v-bind:cartData="zemsCart" />
+        <CartDetails v-bind:cartData="zemsCart" />
       </div>
     </div>    
   </div>           

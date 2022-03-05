@@ -1,4 +1,3 @@
-
 <template>
   <div class="container">
     <div class="medium-4 gap-1">
@@ -16,7 +15,7 @@
         </div>
       </div>
       <div>
-        <CartDetails v-bind:data="test" v-bind:cartData="zemsCart" />
+        <CartDetails v-bind:cartData="zemsCart" />
       </div>
     </div>    
   </div>           
@@ -33,8 +32,7 @@ export default {
   data() {
       return {
           produtcs: [],
-          zemsCart : [],
-          test: 'My Test Value'
+          zemsCart : []
       } // return
   }, // Data
   async created(){
