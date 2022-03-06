@@ -40,7 +40,7 @@ export default {
   }, // Data
   async created(){
     try{
-      const response = await axios.get("http://resback.ezesoft.uk/api/menus/");
+      const response = await axios.get("https://resback.ezesoft.uk/api/menus/");
       this.produtcs = response.data;
     } catch (e){
       console.error(e);

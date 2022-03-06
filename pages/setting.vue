@@ -25,7 +25,7 @@ export default {
   methods:{
     postSetting(e){
       const data = Object.fromEntries(new FormData(e.target));
-      axios.post('http://resback.ezesoft.uk/api/settings/', data)
+      axios.post('https://resback.ezesoft.uk/api/settings/', data)
       .then((res)=>{
         console.log(res);
       });
@@ -33,7 +33,7 @@ export default {
   },
   async asyncData({$axios}){
     try{
-      const settingData = await $axios.$get("http://resback.ezesoft.uk/api/settings/");
+      const settingData = await $axios.$get("https://resback.ezesoft.uk/api/settings/");
       return { settingData };
     } catch (e){
       console.error(e);

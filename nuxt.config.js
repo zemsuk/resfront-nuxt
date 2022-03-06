@@ -40,7 +40,7 @@ export default {
   ],
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseURL: "http://resback.ezesoft.uk/api/",
+    baseURL: "https://resback.ezesoft.uk/api/",
   },
   publicRuntimeConfig: {
     baseURL: 'http://localhost:3000/'

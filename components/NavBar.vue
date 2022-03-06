@@ -1,6 +1,6 @@
 <template>
     <div class="container all-6 nav">
-        <div><NuxtLogo /></div>
+        <div><NuxtLogo /></div>        
         <div class="span-5">
             <ul>
                 <li><a href="/">Homes</a></li>
@@ -31,7 +31,7 @@ export default {
     }, // Data
     async created(){
         try{
-        const response = await axios.get("http://resback.ezesoft.uk/api/takeaway_cat/");
+        const response = await axios.get("https://resback.ezesoft.uk/api/takeaway_cat/");
         this.categories = response.data;
         } catch (e){
         console.error(e);
