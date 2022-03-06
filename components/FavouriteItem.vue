@@ -1,6 +1,6 @@
-
 <template>
   <div class="container">
+    <!-- <Card /> -->
     <div class="medium-4 gap-1">
       <div class="span-3 medium-3 gap-1">
         <div v-for="(product, index) in produtcs" :key="'item_'+index" class="item" v-if="product.is_favourite == true">
@@ -24,11 +24,13 @@
 
 <script>
 import CartDetails from './CartDetails.vue'
+// import Card from 'blocks/Card.vue'
 import axios from 'axios'
 export default {
   name: 'FavouriteItems',
   components:{
-    CartDetails
+    CartDetails,
+    // Card
   },  
   data() {
       return {

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <NavBar />
     <Items/>
   </div>
 </template>

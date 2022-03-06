@@ -7,6 +7,7 @@
                 <li><a href="/menus">Menus</a></li>
                 <li><a href="/cart">Cart</a></li>
                 <li><a href="/setting">Setting</a></li>
+                <li><a href="/login">Login</a></li>
             </ul>
         </div>
         <div class="span-6">
