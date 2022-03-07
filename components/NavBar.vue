@@ -3,11 +3,11 @@
         <div><NuxtLogo /></div>        
         <div class="span-5">
             <ul>
-                <li><a href="/">Homes</a></li>
-                <li><a href="/menus">Menus</a></li>
-                <li><a href="/cart">Cart</a></li>
-                <li><a href="/setting">Setting</a></li>
-                <li><a href="/login">Login</a></li>
+                <li><NuxtLink to="/">Homes</NuxtLink></li>
+                <li><NuxtLink to="/menus">Menus</NuxtLink></li>
+                <li><NuxtLink to="/cart">Cart</NuxtLink></li>
+                <li><NuxtLink to="/setting">Setting</NuxtLink></li>
+                <li><NuxtLink to="/login">Login</NuxtLink></li>
             </ul>
         </div>
         <div class="span-6">
@@ -36,6 +36,9 @@ export default {
         } catch (e){
         console.error(e);
         }
+    },
+    asyncData(context){
+        console.log("context");
     },
 }
 </script>

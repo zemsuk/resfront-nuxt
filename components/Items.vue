@@ -61,7 +61,6 @@ export default {
         if(cartItem.id == product.id){
           cartItem.qty = cartItem.qty +1;
           exists = true;
-          console.log(product.name);
           break;
         }        
       }
