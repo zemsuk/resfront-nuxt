@@ -2,7 +2,7 @@
   <div>
     <div class="container">
         <h1>Settings</h1>
-        <p>{{settingData}}</p>
+        <p>{settingData}}</p>
         <form action="" @submit.prevent="postSetting" method="POST">
           <div><input type="text" name="key" /></div>
           <div><input type="text" name="value" /></div>
@@ -31,14 +31,14 @@ export default {
       });
     }
   },
-  async asyncData({$axios}){
-    try{
-      const settingData = await $axios.$get("https://resback.ezesoft.uk/api/settings/");
-      return { settingData };
-    } catch (e){
-      console.error(e);
-    }
-  },
+  // async asyncData({$axios}){
+  //   try{
+  //     const settingData = await $axios.$get("https://resback.ezesoft.uk/api/settings/");
+  //     return { settingData };
+  //   } catch (e){
+  //     console.error(e);
+  //   }
+  // },
 
 }
 </script>

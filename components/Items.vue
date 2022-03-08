@@ -2,7 +2,7 @@
   <div class="container">
     <div class="medium-4 gap-1">
       <div class="span-3 medium-3 gap-1">
-        <div v-for="(product, index) in produtcs" :key="'item_'+index" class="item" v-if="product.category.slug == $route.params.category">
+        <div v-for="(product, index) in items" :key="'item_'+index" class="item" v-if="product.category.slug == $route.params.category">
           <!-- <div class="image">
             <img :src="product.image" alt="">
           </div> -->
@@ -17,7 +17,8 @@
       <div>
         <CartDetails v-bind:cartData="zemsCart" />
       </div>
-    </div>    
+    </div> 
+    {{items}}   
   </div>           
 </template>
 
@@ -28,7 +29,8 @@ export default {
   name: 'Items',
   components:{
     CartDetails
-  },  
+  }, 
+  props: ['items'], 
   data() {
       return {
           produtcs: [],

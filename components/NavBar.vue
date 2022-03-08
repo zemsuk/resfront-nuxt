@@ -37,8 +37,5 @@ export default {
         console.error(e);
         }
     },
-    asyncData(context){
-        console.log("context");
-    },
 }
 </script>
