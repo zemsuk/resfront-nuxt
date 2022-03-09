@@ -1,7 +1,6 @@
 <template>
   <div>
-    <Items v-bind:items="items" />
-    
+    <Items v-bind:items="items" />    
   </div>
 </template>
 

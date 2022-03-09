@@ -9,7 +9,8 @@ ul {
     padding: 0;
 }
 .nav ul li{
-    display: inline-block;    
+    display: inline-block;  
+    margin: 10px 1px;  
 }
 .nav ul li a{
     background-color: aquamarine;
@@ -45,3 +46,33 @@ a.nuxt-link-active {
     background-color: blue;
     color: #00c58e;
   }
+.popup{   
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   min-height: 100vh;
+   height: 100%;  
+   align-content: center;
+   justify-content: center;
+   display: grid;
+   visibility: hidden;
+}
+.addon{
+    margin: 0 auto;
+    max-width: 400px;
+    width: 98%;
+    background: rgb(0, 166, 231); 
+    margin: 5px;    
+}
+.close{
+    width: 30px;
+    padding: 5px 0;
+    height: 20px;
+    text-align: center;
+    background-color:#f00;
+    color: #fff;
+    justify-self: end;
+    margin-bottom: 10px;
+    cursor: pointer;
+}

@@ -1,16 +1,35 @@
 <template>
   <div class="container">
+    <div class="myZems">Test </div>
     <div class="medium-4 gap-1">
       <div class="span-3 medium-3 gap-1">
-        <div v-for="(product, index) in items" :key="'item_'+index" class="item" v-if="product.category.slug == $route.params.category">
-          <!-- <div class="image">
-            <img :src="product.image" alt="">
-          </div> -->
+        <div  v-for="(product, index) in items" :key="'item_'+index" class="item" v-if="product.category.slug == $route.params.category">
+          
           <div class="title">{{product.item.name}}</div>
           <p>{{product.price}}</p>
           <p>{{product.category.slug}}</p>
           <p>{{product.item.details}}</p>
-          <button @click="addCart(product)" class="link">Cart</button>
+          <div v-if="product.addons != '' ">
+            <button @click="pop_open('pop_'+product.id)" class="link">Cart +</button>
+            <div class="popup" :id="'pop_'+product.id">
+              <div class="addon">
+                <div class="all-2">
+                  <div class="padding-1">{{product.item.name}}</div>
+                  <div class="close" @click="close('pop_'+product.id)"  :data-id="product.id">X</div>
+                </div>
+                <hr/>
+                <div v-for="(addon, i) in product.addons" :key="'addon_'+i" class="all-4 padding-1">
+                  <div>{{addon.extra.name}}</div>            
+                  <div>{{addon.price}}</div>            
+                  <div>{{addon.sales}}</div>            
+                  <button @click="addCart(product)" class="link">Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div v-else>
+            <button @click="addCart(product)" class="link">Cart</button>
+          </div>
             
         </div>
       </div>
@@ -18,7 +37,6 @@
         <CartDetails v-bind:cartData="zemsCart" />
       </div>
     </div> 
-    {{items}}   
   </div>           
 </template>
 
@@ -55,7 +73,15 @@ export default {
       }, deep: true
     }
   },
-  methods : {
+  methods : {  
+    pop_open(pid){
+      var popup = document.getElementById(pid);
+      popup.style.visibility="visible";
+    },  
+    close(pid){
+      var popup = document.getElementById(pid);
+      popup.style.visibility="hidden";
+    },
     addCart(product) {
       let exists = false
       
