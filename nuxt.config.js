@@ -14,7 +14,8 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel:"stylesheet", type:"text/css", href:"/css/grid.css"},
-      { rel:"stylesheet", type:"text/css", href:"/css/style.css"}
+      // { rel:"stylesheet", href:"/css/style.css"},
+      { rel:"stylesheet", href:"http://localhost/css/main.css"},
     ],
     script: [
       { src: "/js/main.js", body: true },
@@ -23,7 +24,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    
+    // '~/static/css/style.scss'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
