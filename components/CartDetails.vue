@@ -1,67 +1,50 @@
 <template>
-    <div>
-        <h4>Cart</h4>        
-        <div v-for="(product, index) in cartData" :key="'ci_'+index" class="item all-4">
-            <div class="span-4">{{product.item.name}}</div>
-            
-            <div class="all-4 span-4">
-                <div class="span-3 all-6">
-                    <button @click="downCart(product)">-</button>
-                    <div>{{product.qty}}</div>
-                    <button @click="upCart(product)">+</button>
-                    <button @click="removeCart(product)">x</button>
+    <div class="cart-details">
+        <h4>Cart</h4> 
+        <div v-if="cartQuantity > 0">
+            <div class="all-4 cart-head">
+                <div class="span-3">Item Name</div>
+                <div>Price</div>
+            </div>
+            <div v-for="(product, index) in cart" :key="'ci_'+index" class="item all-4">
+                <div class="span-4">{{product.cid}}: {{ product.name }}</div>
+                <div class="all-4 span-4">
+                    <div class="span-3 all-6">
+                        <button @click="downCart(product.cid)">-</button>
+                        <div>{{product.qty}}</div>
+                        <button @click="upCart(product.cid)">+</button>
+                        <button @click="removeCart(product.cid)">x</button>
+                    </div>
+                    <div class="price">$ {{product.price * product.qty}}</div>
                 </div>
-                <div class="price">$ {{product.price * product.qty}}</div>
+            </div>
+            <hr> 
+            <div class="all-2">
+                <div><b>Total: </b> {{cartQuantity}}</div>
+                <div class="text-right"><b>$ {{cartTotal}}</b></div>
             </div>
         </div>
-        <div class="all-2">
-            <div><b>Total:</b> {{totalQty}}</div>
-            <div class="text-right"><b>$ {{totaPrice}}</b></div>
+        <div v-else>
+            <p>The Cart is Empty!! 😢</p>
         </div>
+        <pre>
+            {{cart}}
+        </pre>
     </div>
 </template>
 
 <script>
+import {mapGetters, mapActions} from 'vuex';
 export default {
-    props: ['data', 'cartData'], 
+    props: ['cartData'], 
     computed:{
-        totaPrice(){
-            let sum = 0;
-            for(const product of this.cartData){
-                sum += product.price * product.qty
-            }
-            return sum;
-        },
-        totalQty(){
-            let sum = 0;
-            for(const product of this.cartData){
-                sum += product.qty
-            }
-            return sum;
-        }
+        ...mapGetters(['cart', 'cartQuantity', 'cartTotal']),               
     }, 
     methods:{
-        downCart(product){
-            const zemsCart = this.cartData            
-            const pid = zemsCart.findIndex(item => item.id == product.id)            
-            zemsCart[pid].qty -= 1
-            if(zemsCart[pid].qty <1 ){
-                zemsCart.splice(pid, 1)
-            } 
-            this.$emit('update:cartData', zemsCart)
-        },
-        upCart(product){
-            const zemsCart = this.cartData            
-            const pid = zemsCart.findIndex(item => item.id == product.id)            
-            zemsCart[pid].qty += 1            
-            this.$emit('update:cartData', zemsCart)
-        },
-        removeCart(product){
-            const zemsCart = this.cartData            
-            const pid = zemsCart.findIndex(item => item.id == product.id)
-            zemsCart.splice(pid, 1)
-            this.$emit('update:cartData', zemsCart)
-        }
-    }  
+        ...mapActions(['downCart', 'upCart', 'removeCart']),        
+    },
+    // mounted(){
+    //     this.$store.dispatch('getCart')
+    // }  
 }
 </script>

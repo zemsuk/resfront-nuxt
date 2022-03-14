@@ -1,41 +1,30 @@
 <template>
-    <div class="container all-6 nav">
-        <div><NuxtLogo /></div>        
-        <div class="span-5">
-            <ul>
-                <li><NuxtLink to="/">Homes</NuxtLink></li>
-                <li><NuxtLink to="/menus">Menus</NuxtLink></li>
-                <li><NuxtLink to="/cart">Cart</NuxtLink></li>
-                <li><NuxtLink to="/setting">Setting</NuxtLink></li>
-                <li><NuxtLink to="/login">Login</NuxtLink></li>
-            </ul>
-        </div>
-        <div class="span-6">
-            <ul class="category">
-                <li><NuxtLink to="/menus/favourite">Favourite</NuxtLink></li>
-                <li v-for="(category, index) in categories" :key="'cat_'+index"><NuxtLink :to="'/menus/'+category.slug">{{category.name}}</NuxtLink></li>
-            </ul>
-        </div>        
-    </div>
+    <header class="header">
+        <div class="container all-6">
+            <div class="logo"><nuxt-link to="/"><img :src="require(`static/images/webpoka.png`)"  alt="Logo"></nuxt-link></div>        
+            <div class="span-5">
+                <ul class="nav">
+                    <li><NuxtLink to="/">Homes</NuxtLink></li>
+                    <li><NuxtLink to="/menus">Menus</NuxtLink></li>
+                    <li><NuxtLink to="/setting">Setting</NuxtLink></li>
+                    <li><NuxtLink to="/login">Login </NuxtLink></li>
+                    <li><NuxtLink to="/cart">Cart <span class="cart-count">{{cartQuantity}}</span></NuxtLink></li>
+                </ul>
+            </div>
+        </div>                  
+    </header>
 </template>
 
 <script>
-import axios from 'axios'
+import {mapGetters} from 'vuex';
 
 export default {
-    name:'NavBar',
-    data() {
-      return {
-          categories: []
-      } // return
-    }, // Data
-    async created(){
-        try{
-        const response = await axios.get("https://resback.ezesoft.uk/api/takeaway_cat/");
-        this.categories = response.data;
-        } catch (e){
-        console.error(e);
-        }
+    name:'NavBar',    
+    computed:{ 
+        ...mapGetters(['cartQuantity']),
     },
+    mounted(){
+        this.$store.dispatch('getCart')
+    } 
 }
 </script>

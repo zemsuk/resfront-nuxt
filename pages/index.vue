@@ -1,22 +1,15 @@
 <template>
   <div>
-    <Tutorial/>
-    <div>
-      {{items}}
-    </div>
+    <Hero />
+    <Featured />
+    <Items />  
+    <Process />
+    <Cta />  
   </div>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage',
-  computed: {
-    items(){
-      return this.$store.state.items
-    }
-  },
-  mounted(){
-    this.$store.dispatch('getItems')
-  }
+  name: 'IndexPage',  
 }
 </script>

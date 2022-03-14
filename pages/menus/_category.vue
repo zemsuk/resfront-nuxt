@@ -1,19 +1,28 @@
 <template>
   <div>
-    <Items v-bind:items="items" />    
+    <div class="container">
+      <CategoryMenu v-bind:cat_menu="categories" />
+    </div>    
+    <Items  />    
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'CategoryPage',
-  computed: {
-    items(){
-      return this.$store.state.items
-    }
+  data() {
+    return {
+        categories: [],
+    } // return
   },
-  mounted(){
-    this.$store.dispatch('getItems')
-  }
+  async created(){
+      try{
+      const response = await axios.get("https://resback.ezesoft.uk/api/takeaway_cat/");
+      this.categories = response.data;
+      } catch (e){
+      console.error(e);
+      }
+  },  
 }
 </script>
